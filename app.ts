@@ -1,5 +1,5 @@
 const convertedNum = (num: String, digit: number) => {
-  if (digit == 3 || (digit == 2 && num == 'sıfır')) {
+  if ((digit == 3 || digit == 2) && num == 'sıfır') {
     return '';
   }
   return num;
@@ -67,4 +67,4 @@ const convertText = (number: number) => {
   }
   return result;
 };
-console.log(convertText(24));
+console.log(convertText(431));
