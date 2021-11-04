@@ -1,4 +1,12 @@
+const convertedNum = (num: String, digit: number) => {
+  if (digit == 3 || (digit == 2 && num == 'sıfır')) {
+    return '';
+  }
+  return num;
+};
 const convertText = (number: number) => {
+  const splitted: string[] = String(number).split('');
+  let result: string = '';
   const ones: String[] = [
     'sıfır',
     'bir',
@@ -12,6 +20,7 @@ const convertText = (number: number) => {
     'dokuz',
   ];
   const tens: String[] = [
+    'sıfır',
     'on',
     'yirmi',
     'otuz',
@@ -38,18 +47,24 @@ const convertText = (number: number) => {
   if (String(number).length == 1) {
     return ones[number - 1];
   } else if (String(number).length == 2) {
-    const splitted: string[] = String(number).split('');
-    return tens[Number(splitted[0]) - 1] + ' ' + ones[Number(splitted[1]) - 1];
+    const digit: number = String(number).length;
+    return (
+      convertedNum(tens[Number(splitted[0])], digit) +
+      ' ' +
+      convertedNum(ones[Number(splitted[1])], digit)
+    );
   } else if (String(number).length == 3) {
+    const digit: number = String(number).length;
     const splitted: string[] = String(number).split('');
     console.log(splitted);
-    return (
-      aHundreds[Number(splitted[0]) - 1] +
+
+    result =
+      convertedNum(aHundreds[Number(splitted[0]) - 1], digit) +
       '' +
-      tens[Number(splitted[1]) - 1] +
+      convertedNum(tens[Number(splitted[1])], digit) +
       '' +
-      ones[Number(splitted[2])]
-    );
+      convertedNum(ones[Number(splitted[2])], digit);
   }
+  return result;
 };
-console.log(convertText(130));
+console.log(convertText(24));
