@@ -1,5 +1,5 @@
 const convertedNum = (num: String, digit: number) => {
-  if ((digit == 3 || digit == 2 || digit == 4) && num == 'sıfır') {
+  if (digit > 1 && num == 'Sıfır') {
     return '';
   }
 
@@ -28,7 +28,7 @@ const convertText = (number: number) => {
     'Otuz',
     'Kırk',
     'Elli',
-    'Eltmış',
+    'Altmış',
     'Yetmiş',
     'Seksen',
     'Doksan',
@@ -65,7 +65,7 @@ const convertText = (number: number) => {
     )}`;
   } else if (String(number).length == 4) {
     result = `${
-      convertedNum(ones[Number(splitted[0])], digit) != 'bir'
+      convertedNum(ones[Number(splitted[0])], digit) != 'Bir'
         ? convertedNum(ones[Number(splitted[0])], digit)
         : ''
     } Bin ${convertedNum(
@@ -75,7 +75,22 @@ const convertText = (number: number) => {
       ones[Number(splitted[3])],
       digit,
     )}`;
+  } else if (String(number).length == 5) {
+    result = `${convertedNum(tens[Number(splitted[0])], digit)} ${convertedNum(
+      ones[Number(splitted[1])],
+      digit,
+    )} ${
+      convertedNum(ones[Number(splitted[0])], digit) != 'Bir'
+        ? convertedNum(ones[Number(splitted[0])], digit)
+        : ''
+    }Bin ${convertedNum(
+      aHundreds[Number(splitted[2]) - 1],
+      digit,
+    )} ${convertedNum(tens[Number(splitted[3])], digit)} ${convertedNum(
+      ones[Number(splitted[4])],
+      digit,
+    )}`;
   }
   return result;
 };
-console.log(convertText(9999));
+console.log(convertText(19993));
