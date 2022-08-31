@@ -89,8 +89,6 @@ const convertText = (number: number) => {
       digit,
     )}`;
   }
+  // It's ok until 5
   return result;
 };
-for (let i = 4102; i <= 4444; i++) {
-  console.log('given ' + i + ' ' + convertText(i));
-}
