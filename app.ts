@@ -1,3 +1,8 @@
+const data = require('./data.json');
+const ones: String[] = data?.ones;
+const tens: String[] = data?.tens;
+const aHundreds: String[] = data?.aHundres;
+
 const convertedNum = (num: String, digit: number) => {
   if (digit > 1 && num == 'Sıfır') {
     return '';
@@ -9,42 +14,6 @@ const convertText = (number: number) => {
   const digit: number = String(number).length;
   const splitted: string[] = String(number).split('');
   let result: string = '';
-  const ones: String[] = [
-    'Sıfır',
-    'Bir',
-    'İki',
-    'Üç',
-    'Dört',
-    'Beş',
-    'Altı',
-    'Yedi',
-    'Sekiz',
-    'Dokuz',
-  ];
-  const tens: String[] = [
-    'Sıfır',
-    'On',
-    'Yirmi',
-    'Otuz',
-    'Kırk',
-    'Elli',
-    'Altmış',
-    'Yetmiş',
-    'Seksen',
-    'Doksan',
-    'Yüz',
-  ];
-  const aHundreds: String[] = [
-    'Yüz',
-    'İki yüz',
-    'Üç yüz',
-    'Dört yüz',
-    'Beş yüz',
-    'Altı yüz',
-    'Yedi yüz',
-    'Sekiz yüz',
-    'Dokuz yüz',
-  ];
   if (number == 0) return ones[0];
   switch (digit) {
     case 1:
@@ -111,6 +80,6 @@ const convertText = (number: number) => {
     default:
       console.warn('There is something wrong!');
   }
-  // It's ok until 5
+  // It's ok until 6
   return result;
 };
