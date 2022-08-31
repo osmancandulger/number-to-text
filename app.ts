@@ -42,20 +42,18 @@ const convertText = (number: number) => {
     'Beş yüz',
     'Altı yüz',
     'Yedi yüz',
-    'Seki zyüz',
+    'Sekiz yüz',
     'Dokuz yüz',
   ];
   if (number == 0) return ones[0];
   if (String(number).length == 1) {
-    return ones[number - 1];
+    return ones[number];
   } else if (String(number).length == 2) {
     return (result = `${convertedNum(
       tens[Number(splitted[0])],
       digit,
     )} ${convertedNum(ones[Number(splitted[1])], digit)}`);
   } else if (String(number).length == 3) {
-    console.log(splitted);
-
     result = `${convertedNum(
       aHundreds[Number(splitted[0]) - 1],
       digit,
@@ -93,4 +91,6 @@ const convertText = (number: number) => {
   }
   return result;
 };
-console.log(convertText(19993));
+for (let i = 650; i <= 950; i++) {
+  console.log('given ' + i + ' ' + convertText(i));
+}
