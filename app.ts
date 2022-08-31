@@ -80,14 +80,11 @@ const convertText = (number: number) => {
       result = `${convertedNum(
         tens[Number(splitted[0])],
         digit,
-      )} ${convertedNum(ones[Number(splitted[1])], digit)} ${
-        convertedNum(ones[Number(splitted[0])], digit) != 'Bir'
-          ? convertedNum(ones[Number(splitted[0])], digit)
+      )} ${convertedNum(ones[Number(splitted[1])], digit)} Bin ${
+        Number(splitted[2]) != 0
+          ? convertedNum(aHundreds[Number(splitted[2]) - 1], digit)
           : ''
-      }Bin ${convertedNum(
-        aHundreds[Number(splitted[2]) - 1],
-        digit,
-      )} ${convertedNum(tens[Number(splitted[3])], digit)} ${convertedNum(
+      } ${convertedNum(tens[Number(splitted[3])], digit)} ${convertedNum(
         ones[Number(splitted[4])],
         digit,
       )}`;
