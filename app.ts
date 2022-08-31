@@ -89,6 +89,25 @@ const convertText = (number: number) => {
         digit,
       )}`;
       break;
+
+    case 6:
+      result = `${
+        convertedNum(ones[Number(splitted[0])], digit) != 'Bir'
+          ? convertedNum(ones[Number(splitted[0])], digit)
+          : ''
+      } Yüz ${convertedNum(tens[Number(splitted[1])], digit)} ${
+        Number(splitted[2]) != 0
+          ? convertedNum(ones[Number(splitted[2])], digit)
+          : ''
+      } Bin ${
+        Number(splitted[3]) != 0
+          ? convertedNum(aHundreds[Number(splitted[3]) - 1], digit)
+          : ''
+      } ${convertedNum(tens[Number(splitted[4])], digit)} ${convertedNum(
+        ones[Number(splitted[5])],
+        digit,
+      )}`;
+      break;
     default:
       console.warn('There is something wrong!');
   }
