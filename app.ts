@@ -67,7 +67,7 @@ const convertText = (number: number) => {
         ? convertedNum(ones[Number(splitted[0])], digit)
         : ''
     } Bin ${convertedNum(
-      aHundreds[Number(splitted[1]) - 1],
+      Number(splitted[1]) != 0 ? aHundreds[Number(splitted[1]) - 1] : '',
       digit,
     )} ${convertedNum(tens[Number(splitted[2])], digit)} ${convertedNum(
       ones[Number(splitted[3])],
@@ -91,6 +91,6 @@ const convertText = (number: number) => {
   }
   return result;
 };
-for (let i = 650; i <= 950; i++) {
+for (let i = 4102; i <= 4444; i++) {
   console.log('given ' + i + ' ' + convertText(i));
 }
