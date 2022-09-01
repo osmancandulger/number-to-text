@@ -1,7 +1,7 @@
 const data = require('./data.json');
 const ones: String[] = data?.ones;
 const tens: String[] = data?.tens;
-const aHundreds: String[] = data?.aHundres;
+const aHundreds: String[] = data?.aHundreds;
 
 const convertedNum = (num: String, digit: number) => {
   if (digit > 1 && num == 'Sıfır') {
