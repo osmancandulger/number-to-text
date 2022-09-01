@@ -1,7 +1,7 @@
 const data = require('./data.json');
 const ones: String[] = data?.ones;
 const tens: String[] = data?.tens;
-const aHundreds: String[] = data?.aHundres;
+const aHundreds: String[] = data?.aHundreds;
 
 const convertedNum = (num: String, digit: number) => {
   if (digit > 1 && num == 'Sıfır') {
@@ -11,6 +11,7 @@ const convertedNum = (num: String, digit: number) => {
   return num;
 };
 const convertText = (number: number) => {
+  // TODO: find a way to splice if 0
   const digit: number = String(number).length;
   const splitted: string[] = String(number).split('');
   let result: string = '';
@@ -77,9 +78,38 @@ const convertText = (number: number) => {
         digit,
       )}`;
       break;
+    case 7:
+      const zeroLength: number = splitted.filter(
+        item => Number(item) === 0,
+      ).length;
+      result = `${convertedNum(ones[Number(splitted[0])], digit)} Milyon ${
+        convertedNum(ones[Number(splitted[1])], digit) != 'Bir' &&
+        Number(splitted[1]) != 0
+          ? `${convertedNum(ones[Number(splitted[1])], digit)} Yüz`
+          : Number(splitted[1]) != 0
+          ? 'Yüz'
+          : ''
+      } ${convertedNum(tens[Number(splitted[2])], digit)} ${
+        zeroLength == 6
+          ? ''
+          : Number(splitted[3]) != 0
+          ? `${convertedNum(ones[Number(splitted[3])], digit)} Bin`
+          : zeroLength == 6
+          ? ''
+          : 'Bin'
+      } ${
+        Number(splitted[4]) != 0
+          ? convertedNum(aHundreds[Number(splitted[4]) - 1], digit)
+          : ''
+      } ${convertedNum(tens[Number(splitted[5])], digit)} ${convertedNum(
+        ones[Number(splitted[6])],
+        digit,
+      )}`;
+      break;
     default:
       console.warn('There is something wrong!');
   }
-  // It's ok until 6
+  // It's ok until 8
   return result;
 };
+export default convertText;
