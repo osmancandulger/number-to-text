@@ -10,7 +10,7 @@ This package helps to convert your number value to text version.
 ```javascript
 import convertText from 'function'
 
-const text = ()=> convertText(1250);
+const text = convertText(1250);
 console.log(text) // Logs Bin İki yüz elli
 ```
 
