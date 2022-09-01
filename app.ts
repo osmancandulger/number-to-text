@@ -3,7 +3,13 @@ const ones: String[] = data?.ones;
 const tens: String[] = data?.tens;
 const aHundreds: String[] = data?.aHundreds;
 
-const convertedNum = (num: String, digit: number) => {
+/**
+ * @decription returns given val by condition
+ * @param {String} num
+ * @param {Number} digit
+ * @returns {String} text
+ */
+const convertedNum = (num: String, digit: number): String => {
   if (digit > 1 && num == 'Sıfır') {
     return '';
   }
