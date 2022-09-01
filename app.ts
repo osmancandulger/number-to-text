@@ -10,7 +10,13 @@ const convertedNum = (num: String, digit: number) => {
 
   return num;
 };
-const convertText = (number: number) => {
+
+/**
+ * @description converts number to text strings
+ * @param {number} number
+ * @returns {string} text
+ */
+const convertText = (number: number): String => {
   // TODO: find a way to splice if 0
   const digit: number = String(number).length;
   const splitted: string[] = String(number).split('');
